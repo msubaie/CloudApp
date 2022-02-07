@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
 # <HINT> Import any new Models here
-from .models import Course, Enrollment, Question, Choice, Submission
+from .models import Course, Enrollment, Question, Choice, Submission, Lesson
 from django.contrib.auth.models import User
 from django.shortcuts import get_object_or_404, render, redirect
 from django.urls import reverse
@@ -116,8 +116,8 @@ def submit(request, course_id):
     enrollement = Enrollment.objects.get(user=user, course=course)
     submission = Submission.objects.create(enrollment=enrollement)
     for answer in extract_answers(request):
-        submission.chocie.add(answer)
-    return redirect('/onlinecourse/course/'+str(course_id)+'/submission/'+str(sub.id)+'/result/')
+        submission.choice.add(answer)
+    return redirect('/onlinecourse/course/'+str(course_id)+'/submission/'+str(submission.id)+'/result/')
 
 # <HINT> A example method to collect the selected choices from the exam form from the request object
 def extract_answers(request):
@@ -144,13 +144,13 @@ def show_exam_result(request, course_id, submission_id):
     choice_id = submission.choice.all()
     score=0
     total=0
-    for quest in lesson.qusetion_set.all():
+    for quest in lesson.question_set.all():
         for choice in quest.choice_set.all():
             if choice.is_correct:
                 total+=1
     for c in choice_id:
         if c.is_correct:
-            ques = get_object_or_404(Qusetion, pk=c.question_id.id)
+            ques = get_object_or_404(Question, pk=c.question_id.id)
             score+=ques.grade
     grade=(score/total)*100
 
