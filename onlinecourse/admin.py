@@ -6,15 +6,15 @@ from .models import Course, Lesson, Instructor, Learner, Question, Choice
 
 class QuestionInline(admin.StackedInline):
     model = Question
-    extra = 5
+    extra = 1
 
 class ChoiceInline(admin.StackedInline):
     model = Choice
-    extra = 4    
+    extra = 2    
 
 class LessonInline(admin.StackedInline):
     model = Lesson
-    extra = 5
+    extra = 1
 
 
 # Register your models here.

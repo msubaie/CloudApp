@@ -53,7 +53,7 @@
                         <div  class="btn btn-primary btn-block" id="exam" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
                             Start Exam
                         </div>
-                        <div id="exam" class="collapse">
+                        <div id="collapseExample" class="collapse">
                             <form id="questionform" action="{% url  'onlinecourse:submit' course.id %}" method="post">
                                 {% for question in lesson.question_set.all %}
                                     <div class="card mt-1">
