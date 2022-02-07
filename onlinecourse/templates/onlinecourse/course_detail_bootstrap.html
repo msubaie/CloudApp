@@ -61,13 +61,13 @@
                                         {% csrf_token %}
                                         <div class="form-group">
                                             {% for choice in question.choise_set.all %}
-                                                <div class="form-check">
-                                                    <label class="form-check-label">
-                                                        <input type="checkbox" name="choice_{{choice.id}}"
-                                                            class="form-check-input" id="{{choice.id}}"
-                                                            value="{{choice.id}}">{{ choice.choice_text }}
-                                                    </label>
-                                                </div>
+                                            <div class="form-check">
+                                                <label class="form-check-label">
+                                                    <input type="checkbox" name="choice_{{choice.id}}"
+                                                        class="form-check-input" id="{{choice.id}}"
+                                                        value="{{choice.id}}">{{ choice.choice_text }}
+                                                </label>
+                                            </div>
                                             {% endfor %}
                                         </div>
                                     </div>
