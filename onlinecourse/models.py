@@ -125,7 +125,7 @@ class Question(models.Model):
 class Choice(models.Model):
      question = models.ForeignKey(Question, on_delete=models.CASCADE)
      choice_text = models.TextField()
-     is_correct = False 
+     is_correct = models.BooleanField() 
 
 # <HINT> The submission model
 # One enrollment could have multiple submission
@@ -133,5 +133,5 @@ class Choice(models.Model):
 # One choice could belong to multiple submissions
 class Submission(models.Model):
     enrollment = models.ForeignKey(Enrollment, on_delete=models.CASCADE)
-    chocies = models.ManyToManyField(Choice)
+    chocie = models.ManyToManyField(Choice)
     #Other fields and methods you would like to design
